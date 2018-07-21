@@ -1,0 +1,4 @@
+services:
+#    absuser.example:
+#        class: abs\userBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,30 @@
+
+{% block pagetitle %}{{ 'User Edit'}}{% endblock %}
+{% block subtitle %}Admin{% endblock %}
+{% block stylesheets %}{% endblock %}
+
+{% block content %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {% block fos_user_content %}
+        {% dump(user) %}
+        <h1>User</h1>
+
+        <table>
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            </tbody>
+        </table>
+    {% endblock fos_user_content %}
+
+    {% block javascripts %}{% endblock %}
+
+{% endblock content %}

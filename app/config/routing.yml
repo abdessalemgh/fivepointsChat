@@ -1,0 +1,16 @@
+absfivepoints:
+    resource: "@absfivepointsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+# Jsrouting
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+#FOS user Bundle
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

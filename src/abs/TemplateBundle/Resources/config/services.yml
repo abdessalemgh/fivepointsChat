@@ -1,0 +1,7 @@
+services:
+#    Service to generate a dynaamic menu
+    abs_template.menu:
+      class: abs\TemplateBundle\Services\MenuExtention
+      tags:
+          - { name: twig.extension }
+      arguments: ["@doctrine.orm.entity_manager","@twig"]

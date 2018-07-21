@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}All users{% endblock %}
+
+{%  block pageTitle %}
+    Users Profiles
+{%  endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Users</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>ID</th>
+                            <th>username</th>
+                            <th>Last time connected</th>
+                            <th>Last Message</th>
+                            <th>Action</th>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                                {% if app.user.id !=  user.id %}
+                                    <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.lastLogin | date('Y-m-d H:i:s') }}</td>
+                                        <td> Never </td>
+                                        <td> <a href ="{{ path('sendMessage', {'id': user.id}) }}" Send Message>Send Message</a> </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+{% endblock %}
+
+{%  block javascripts %}
+
+{% endblock %}

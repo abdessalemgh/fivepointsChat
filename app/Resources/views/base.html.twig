@@ -1,0 +1,32 @@
+{# Head section #}
+{% include "Template/head.html.twig" %}
+<title>MyBook - {% block title %}welcome{% endblock %}</title>
+<!--  addditional stylesheets     -->
+{% block stylesheets %}{% endblock %}
+</head>
+
+{# Body Section #}
+<body>
+
+<div class="wrapper">
+    {# Side bar section #}
+    {{ MenuBuilder() }}
+
+    {# header Menu section #}
+    {% include "Template/headerMenu.html.twig" %}
+    {%  block pageTitle %}
+    {%  endblock %}
+    {% include "Template/headerMenuEnd.html.twig" %}
+
+    {# body content section #}
+    {% block body %}
+    {% endblock %}
+</div>
+
+</body>
+
+{% include "Template/footer.html.twig" %}
+
+{% block javascripts %}{% endblock %}
+
+</html>

@@ -1,0 +1,32 @@
+<div class="sidebar" data-background-color="black" data-active-color="danger">
+
+    <!--
+        Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+        Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+    -->
+    {%  set path=app.request.get('_route') %}
+
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text">
+                MENU
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li {% if path == 'dashboard' %} class="active" {% endif %}>
+                <a href="{{ path('dashboard') }}">
+                    <i class="ti-panel"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+
+            <li {% if path == 'showusers' %} class="active" {% endif %}>
+                <a href="{{ path('showusers') }}">
+                    <i class="ti-user"></i>
+                    <p>Users</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

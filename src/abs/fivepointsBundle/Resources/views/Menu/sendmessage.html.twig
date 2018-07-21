@@ -1,0 +1,58 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}All users{% endblock %}
+
+{%  block pageTitle %}
+Send Message
+{%  endblock %}
+
+{% block body %}
+
+<div class="content">
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="text-center">
+        <input type="submit" value="{{ 'Send'}}" class="btn btn-info btn-fill btn-wd"  />
+    </div>
+    {{ form_end(form) }}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Users</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>ID</th>
+                            <th>Sender</th>
+                            <th>date</th>
+                            <th>message</th>
+                            <th>Last Message</th>
+                            </thead>
+                            <tbody>
+                            {% for conv in conversation.messages %}
+                                <tr>
+                                    <td>{{ conv.sender.username}}</td>
+                                    <td>{{ conv.time | date('Y-m-d H:i:s') }}</td>
+                                    <td> {{ conv.text }} </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            {% endblock %}
+
+            {%  block javascripts %}
+
+            {% endblock %}

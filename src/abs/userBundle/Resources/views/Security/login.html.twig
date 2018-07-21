@@ -1,0 +1,84 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% include "Template/head.html.twig" %}
+<title>MyBook - {% block title %}Logine Page{% endblock %}</title>
+<!--  addditional stylesheets     -->
+<link rel="stylesheet" href="{{ asset('assets/css/separate/pages/login.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/separate/vendor/pnotify.min.css') }}">
+</head>
+
+{# Body Section #}
+<body>
+<div class="page-center">
+    <div class="page-center-in">
+        <div class="container-fluid">
+            <form class="sign-box" action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="sign-avatar">
+                    <img src="{{ asset('assets/img/new_logo.png') }}" alt="">
+                </div>
+
+                <header class="sign-title">{{ 'LOGIN'|trans }}</header>
+
+                <div class="form-group">
+                    <input type="text" name="_username" value="{{ last_username }}" class="form-control" placeholder="{{ 'username'|trans }}"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="_password" class="form-control" placeholder="{{ 'password'|trans }}"/>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox float-left">
+                        <input type="checkbox" id="signed-in" name="_remember_me" value="on"/>
+                        <label for="signed-in">{{ 'remember_me'|trans }}</label>
+                    </div>
+                    <div class="float-right reset">
+                        <a href="{{ path('fos_user_resetting_request') }}">{{ 'Forgotten account?'|trans }}</a>
+                    </div>
+                    <div class="float-right reset">
+                        <a href="{{ path('user_registration') }}">{{ 'Sign IN now'|trans }}</a>
+                    </div>
+                </div>
+                <button type="submit" id="_submit" name="_submit" class="btn btn-rounded">{{ 'Submit'|trans }}</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+{% include "Template/footer.html.twig" %}
+<script type="text/javascript" src="{{ asset('assets/js/lib/match-height/jquery.matchHeight.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/lib/pnotify/pnotify.js') }}"></script>
+<script>
+    $(function() {
+    $('.page-center').matchHeight({
+    target: $('html')
+    });
+
+    $(window).resize(function(){
+    setTimeout(function(){
+    $('.page-center').matchHeight({
+    remove: true,
+    target: $('html')
+    });
+    },100);
+    });
+
+    {% if error %}
+        PNotify.prototype.options.styling = "bootstrap3";
+
+        new PNotify({
+        title: 'Oh No!',
+        text: '{{ error.messageKey|trans(error.messageData, 'security') }}',
+        type: 'error',
+        icon: 'font-icon font-icon-warning',
+        addclass: 'alert-with-icon'
+        });
+
+    {% endif %}
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block pagetitle %}{{ 'User Edit'}}{% endblock %}
+{% block subtitle %}Admin{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block body %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {% block fos_user_content %}
+        <div class="box-typical box-typical-padding">
+            {#<a href="{{ path('user_index') }}" class="btn btn-inline btn-primary pull-right">{{ 'back'}}</a>#}
+            <br><hr>
+            {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'profile.edit.submit'}}" class="btn btn-inline btn-success"/>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endblock fos_user_content %}
+
+    {% block javascripts %}{% endblock %}
+
+{% endblock body %}
