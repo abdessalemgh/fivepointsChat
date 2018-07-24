@@ -36,7 +36,7 @@ class userController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('showuser');
+            return $this->redirectToRoute('showusers');
         }
 
         return $this->render('absfivepointsBundle:User:new.html.twig', [
